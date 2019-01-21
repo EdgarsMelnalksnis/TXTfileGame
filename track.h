@@ -15,7 +15,10 @@ public:
     Track();
     void input();
     void output();
-    void move(char v){f1.vadiba(v);}
+    void move(char v)
+    {
+        f1.vadiba(v);
+    }
 };
 Track::Track()
 {
@@ -57,11 +60,11 @@ void Track::output()
         for (k=0; k<41; k++)
         {
             if (laukums[k][r]=='@'|laukums[k][r]=='$')
-            cout<<" ";    //@ un $ vietaa izvada atstarpi
+                cout<<" ";    //@ un $ vietaa izvada atstarpi
             else if( k==f1.getKolonna()&r==f1.getRinda())
-            cout<<"o";
+                cout<<"o";
             else
-            cout <<laukums[k][r];
+                cout <<laukums[k][r];
         }
     }
 
