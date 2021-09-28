@@ -5,20 +5,19 @@
 #include "formula.h"
 using namespace std;
 
-
 class Track
 {
-private:
-    char laukums[41][22];//2-dimensiju masivs, kuraa glabaajas karte
-    Formula f1;//tiek izveidota formula
-public:
-    Track();
-    void input();
-    void output();
-    void move(char v)
-    {
-        f1.vadiba(v);
-    }
+    private:
+        char field[41][22];//arry to store map
+        Formula f1;
+    public:
+        Track();
+        void input();
+        void output();
+        void move(char v)
+        {
+            f1.control(v);
+        }
 };
 Track::Track()
 {
@@ -28,19 +27,19 @@ Track::Track()
 void Track::input()
 {
 
-    ifstream fails ( "Trase_01_beta.txt" );//fails no kura lasiit karti
+    ifstream fails ( "Trase_01_beta.txt" );//track file
     char temp;
     int k;
     int r;
 
-    for (r=0; r<22; r++) //ievade masiivaa no faila
+    for (r=0; r<22; r++) 
     {
         for (k=0; k<41; k++)
         {
             fails.get(temp);
             if (temp!='\n')
             {
-                laukums[k][r]=temp;
+                field[k][r]=temp;
             }
             else
                 k--;
@@ -54,17 +53,17 @@ void Track::output()
 {
     int k;
     int r;
-    for (r=0; r<22; r++) //izvade no masiva uz ekrana
+    for (r=0; r<22; r++)
     {
         cout << endl;
         for (k=0; k<41; k++)
         {
-            if (laukums[k][r]=='@'|laukums[k][r]=='$')
-                cout<<" ";    //@ un $ vietaa izvada atstarpi
-            else if( k==f1.getKolonna()&r==f1.getRinda())
+            if (field[k][r] == '@' || field[k][r] == '$')
+                cout<<" ";   
+            else if( k==f1.getColl() && r== f1.getRow())
                 cout<<"o";
             else
-                cout <<laukums[k][r];
+                cout <<field[k][r];
         }
     }
 

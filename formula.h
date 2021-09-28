@@ -4,45 +4,45 @@
 
 class Formula
 {
-private:
-    int rinda;
-    int kolonna;
+    private:
+        int row;
+        int coll;
 
-public:
-    Formula()
-    {
-        rinda=3;
-        kolonna=2;
-    }
+    public:
+        Formula()
+        {
+            row=3;
+            coll=2;
+        }
 
-    int getRinda()
-    {
-        return rinda;
-    }
-    int getKolonna()
-    {
-        return kolonna;
-    }
+        int getRow()
+        {
+            return row;
+        }
+        int getColl()
+        {
+            return coll;
+        }
 
-    void vadiba(char);
+        void control(char);
 };
 
-void Formula::vadiba(char c)
+void Formula::control(char c)
 {
     switch (c)
     {
-    case 'a':
-        if (kolonna>0)kolonna--;
-        break;
-    case 'd':
-        kolonna++;
-        break;
-    case 'w':
-        if (rinda>0)rinda--;
-        break;
-    case 's':
-        rinda++;
-        break;
+        case 'a':
+            if (coll>0)coll--;
+            break;
+        case 'd':
+            coll++;
+            break;
+        case 'w':
+            if (row>0)row--;
+            break;
+        case 's':
+            row++;
+            break;
     }
 }
 

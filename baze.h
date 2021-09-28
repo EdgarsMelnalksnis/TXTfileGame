@@ -4,30 +4,24 @@
 using namespace std;
 class Baze
 {
-private:
-    int rinda;
-    int kolonna;
+    private:
+        int row;
+        int coll;
 
-public:
-    Baze()
-    {
-        rinda=0;
-        kolonna=0;
-    }
-    void set_r(int r)
-    {
-        rinda=r;
-    }
-    void set_k(int k)
-    {
-        kolonna=k;
-    }
-
-
+    public:
+        Baze()
+        {
+            row=0;
+            coll=0;
+        }
+        void setRow(int r)
+        {
+            row=r;
+        }
+        void setColl(int k)
+        {
+            coll=k;
+        }
 };
-
-
-
-
 
 #endif

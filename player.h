@@ -4,14 +4,12 @@
 
 class Formula: public Base
 {
-public:
-    Player()
-    {
-        set_r(3);//speletaja atrasanas vieta (rinda, kolonna)
-        set_k(2);
-    }
+    public:
+        Player()
+        {
+            setRow(3);
+            setColl(2);
+        }
 };
-
-
 
 #endif
