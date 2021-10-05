@@ -2,26 +2,25 @@
 #define BAZE_H
 #include<iostream>
 using namespace std;
-class Baze
-{
+class Baze{
     private:
         int row;
-        int coll;
+        int col;
 
     public:
         Baze()
         {
             row=0;
-            coll=0;
+            col=0;
         }
-        void setRow(int r)
-        {
-            row=r;
-        }
-        void setColl(int k)
-        {
-            coll=k;
-        }
+        void set_r(int r){row=r;}
+        void set_c(int c){col=c;}
+
+
 };
+
+
+
+
 
 #endif

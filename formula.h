@@ -1,49 +1,40 @@
 #ifndef FORMULA_H
 #define FORMULA_H
 #include "baze.h"
-
+#include <ctime>
 class Formula
 {
     private:
         int row;
-        int coll;
-
+        int col;
+        int time_s;//start time
+        int time_e;//end time
+        int speed;
+        int lives;
     public:
         Formula()
         {
-            row=3;
-            coll=2;
+            row=3;//formula atrasanas vieta pec noklusejuma
+            col=2;
+            speed=1;
+            lives=3;
         }
 
-        int getRow()
-        {
-            return row;
-        }
-        int getColl()
-        {
-            return coll;
-        }
-
-        void control(char);
+        int getRow();
+        int getCol();       
+        int getSpeed();    
+        int getLives();
+        void setRow(int r); 
+        void setCol(int c);
+        void setLives();
+        void minusLives();
+        void plusLives();
+        void setTime_s();
+        void setTime_e();
+        int getTime_s();
+        int getTime_e();
+        void setSpeed(bool b);
+        void move(char);
 };
-
-void Formula::control(char c)
-{
-    switch (c)
-    {
-        case 'a':
-            if (coll>0)coll--;
-            break;
-        case 'd':
-            coll++;
-            break;
-        case 'w':
-            if (row>0)row--;
-            break;
-        case 's':
-            row++;
-            break;
-    }
-}
 
 #endif

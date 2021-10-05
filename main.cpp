@@ -1,45 +1,44 @@
 #include <iostream>
-//#include <curses.h>
+#include <conio.h>
 #include "track.h"
 #include <stdlib.h>
-#include <termios.h>
-#include <unistd.h>
-
+#include <ctime>
 using namespace std;
-
-char getch(void)
-{
-    char buf = 0;
-    struct termios old = {0};
-    fflush(stdout);
-    if(tcgetattr(0, &old) < 0)
-        perror("tcsetattr()");
-    old.c_lflag &= ~ICANON;
-    old.c_lflag &= ~ECHO;
-    old.c_cc[VMIN] = 1;
-    old.c_cc[VTIME] = 0;
-    if(tcsetattr(0, TCSANOW, &old) < 0)
-        perror("tcsetattr ICANON");
-    if(read(0, &buf, 1) < 0)
-        perror("read()");
-    old.c_lflag |= ICANON;
-    old.c_lflag |= ECHO;
-    if(tcsetattr(0, TCSADRAIN, &old) < 0)
-        perror("tcsetattr ~ICANON");
-    //  printf("%c\n", buf);
-    return buf;
-}
 
 int main()
 {
+
+
     Track t;
-    char  move;
-    while(1)
+    char dir;
+    bool cont;
+    t.start();
+    system("cls");
+    while(cont)
     {
         t.output();
-        move=getch();
-        t.move(move);
-        //  system("cls");
-    }
-}
 
+        dir=getch();
+        t.move(virziens);
+
+        if(t.check_finish())
+        {
+            cout<<"\n\n\nFinish! laiks:"<<t.getTime()<<" sekundes!\n"<<"Vai velaties sakt no jauna? 1-jaa, 0-nee\n";
+            cin>>cont;
+            t.start();
+            system("cls");
+        }
+        t.check();
+        if(t.check_lives())
+        {
+            cout<<"\niztereetas visas dziiviibas!"<<" Vai velaties sakt no jauna ? 1-jaa, 0-nee\n";
+            cin>>cont;
+            t.start();
+            system("cls");
+        }
+        system("cls");
+    }
+
+
+
+}
